@@ -15,17 +15,25 @@ class _ToastContextState extends State<ToastContext> {
   Widget toast = Container(
     padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(25.0),
-      color: Colors.greenAccent,
+      borderRadius: BorderRadius.circular(10.0),
+      color: Colors.redAccent,
     ),
     child: Row(
-      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(Icons.check),
         SizedBox(
           width: 12.0,
         ),
-        Text("This is a Custom Toast"),
+        Center(
+          child: Text(
+            "This is a Custom Toast",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
+          ),
+        )
       ],
     ),
   );
@@ -33,8 +41,8 @@ class _ToastContextState extends State<ToastContext> {
   _showToast() {
     fToast.showToast(
       child: toast,
-      gravity: ToastGravity.BOTTOM,
-      toastDuration: Duration(seconds: 2),
+      gravity: ToastGravity.FULL,
+      toastDuration: Duration(seconds: 5),
     );
   }
 
@@ -42,7 +50,7 @@ class _ToastContextState extends State<ToastContext> {
     fToast.showToast(
         child: toast,
         gravity: ToastGravity.BOTTOM,
-        toastDuration: Duration(seconds: 2),
+        toastDuration: Duration(seconds: 5),
         positionedToastBuilder: (context, child) {
           return Positioned(
             child: child,
